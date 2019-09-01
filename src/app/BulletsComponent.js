@@ -1,5 +1,5 @@
 import Bullet from './Bullet.js';
-import {Boom,Shoot} from './player.js';
+import {Boom,Shoot,Wind} from './player.js';
 import {Bow} from './Arrow.js';
 
 AFRAME.registerComponent('bullets', {
@@ -33,15 +33,22 @@ AFRAME.registerComponent('bullets', {
 		bow.position.y=-0.07;
 		bow.scale.set(0.15,0.15,0.15);
     this.data.source.setObject3D('bow', bow);
+		var started=false;
 
 		var fire=(e)=>{
 			this.fire();
+			if(!started){
+				setTimeout(Wind,1000);
+				started=true;
+			}
     }
     document.addEventListener("click",fire);
     document.addEventListener("mousedown",fire);
     document.addEventListener("touchstart",fire);
     document.addEventListener("keydown",fire);
     document.getElementById("hand").addEventListener("triggerdown",fire);
+
+
 
   },
   fire:function(){

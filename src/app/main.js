@@ -11,14 +11,14 @@ import './GetbowComponent.js'
 import './StoryComponent.js'
 import './CameracorrectComponent.js'
 import './gradient.js'
-import {Wind} from './player.js'
+/*import {Wind} from './player.js'
 var started=false;
 document.addEventListener("click",function(){
 	if(!started){
 		Wind();
 		started=true;
 	}
-});
+});*/
 
 
 
