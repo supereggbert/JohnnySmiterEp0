@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+	<title>Johnny Smiter - Episode Zero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://js13kgames.com/webxr-src/aframe.js"></script>
+</head>
+
+<body>
+
+    <a-scene fog="type: exponential; color: #200; density:0.07" background="color: red" loading-screen="dotsColor: red; backgroundColor: black">
+<a-entity id="menu" position="0 3 -4" scale="4 4 4">
+<a-entity light="type: spot; angle: 30; intensity: 0.5; penumbra: 1;" position="0 0 1.4" angle="5.9 0 0"></a-entity>
+ 			<a-plane height="1.0" width="1.0" id="fail" material="alphaTest:0.5;color:#ffffff;shader:standard;fog:false;transparent:true;" story="type:fail;height: 0.6" position="0 -0.2 0" visible="false"></a-plane> 		
+			<a-plane height="1.0" width="1.0" id="win" material="alphaTest:0.5;color:#ffffff;shader:standard;fog:false;transparent:true;" story="type:win;height: 0.6" position="0 -0.2 0" visible="false"></a-plane> 		
+			<a-plane height="1.0" width="1.0" id="intro" material="alphaTest:0.5;color:#ffffff;shader:standard;fog:false;transparent:true;" story position="0 -0.2 0"></a-plane>
+</a-entity>
+ 			<a-plane height="150" width="150" rotation="-90 0 0" material="color:#224450; flatShading:true;" shadow="receive: true" cloud></a-plane>
+ 			<a-plane height="800" width="800" rotation="-90 0 0" material="color:#555;flatShading:true;" segments-height="10" segments-width="10" terrain></a-plane>
+			<a-entity id="trees1" trees="seed:1050"></a-entity>
+			<!--<a-entity id="trees2" trees="seed:1050"></a-entity>
+			<a-entity id="trees3" trees="seed:1824"></a-entity>-->
+
+<a-entity>
+<a-entity id="score" text="font: aileronsemibold; align: center; value: RUNES: 0/50" position="0 1 -15" scale="25 25 25"></a-entity>
+</a-entity>
+			<a-entity light="type: spot; angle: 50; cast-shadow:true; penumbra:0.5;color:#555" position="0 10 0" rotation="-90 0 0"></a-entity>
+<a-entity light="type: hemisphere; color: #123; groundColor: #311; intensity: 3"></a-entity>
+      <a-entity id="grid" material="color:green; shader: flat; fog:false;" grid position="0 4 0"></a-entity>
+      <a-entity id="spiders" spiders="life:#life;grid:#grid"></a-entity>
+			<a-sphere material="shader: gradient;side:back" radius="900"></a-sphere>
+      <a-entity bullets="grid: #grid; source: #bow; spiders:#spiders" position="0 0 0"></a-entity>
+
+			</a-entity>
+			<a-entity id="correct" cameracorrect position="0 1.6 0">
+				<a-entity id="camera" camera look-controls="pointerLockEnabled:true">
+					<a-plane id="life" life="spider:#spiders" position="0 0 -0.2" width="5" height="5" material="transparent:true;opacity:0.5;depthTest:false;depthWrite:false;lights:false;fog:false;shader:flat"></a-plane>
+					<a-entity id="bow" scale="0.4 0.4 0.4" position="0 -0.2 -0.2">
+					</a-entity>
+				</a-entity>
+
+				<a-entity laser-controls="hand: right" raycaster="objects: .links; far: 5" id="hand" getbow>
+				</a-entity>
+			</a-entity>
+    </a-scene>
+</body>
+
+</html>
